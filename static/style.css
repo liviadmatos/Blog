@@ -1,0 +1,449 @@
+/*doc css projeto blog*/
+
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-principal: #F4F3E8;
+  --cor-centro: #fffdf5;
+  --cor-botao: #30475E;
+  --cor-destaque: #FF6F61;
+  --cor-texto: #222;
+  --cor-posts: #ffffff;
+  --fonte-titulo: 'Passion One', cursive;
+  --fonte-texto: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  background-color: var(--cor-principal);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+
+/* ===== HEADER ===== */
+header {
+  height: 8vh;
+  width: 100%;
+  background: #ff6d88;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 1px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: fixed;
+  z-index: 1000;
+  gap: 10px;
+}
+
+.btnheader {
+    /* Reset básico para botões nativos */
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    
+    /* Cores e fontes */
+    color: #fff;
+    background-color: var(--cor-botao); /* Azul escuro */
+    font-family: var(--fonte-texto); 
+    font-size: 14px;
+    font-weight: 600;
+    
+    /* Configuração visual do botão (a parte que faz parecer um botão elegante) */
+    padding: 6px 15px;
+    border-radius: 8px;
+   
+    
+    
+    /* Transições para o efeito de hover */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background-color: #4a637d; /* Tom mais escuro */
+    transform: translateY(-1px); /* Efeito de levantar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loguinho {
+  width: 40px;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.inicio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.colunaesquerda, .colunadireita {
+  flex: 1;
+  min-width: 200px;
+  background-color: var(--cor-principal);
+  padding-top: 8vh;
+  
+  
+}
+
+.center {
+  flex: 2;
+  min-width: 320px;
+  background-color: var(--cor-centro);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 8vh;
+  
+  
+  
+  
+}
+
+/* ===== FORMULÁRIO DE POST ===== */
+.form-post {
+  width: 100%;
+  max-width: 700px;
+  background-color: var(--cor-posts);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.form-post:hover {
+  
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.form-post form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-post input[type="text"],
+.form-post textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.form-post input[type="text"]:focus,
+.form-post textarea:focus {
+  border-color: var(--cor-destaque);
+  outline: none;
+}
+
+.form-post textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form-post button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--cor-destaque);
+  color: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.form-post button:hover {
+  background-color: #e85b51;
+  transform: scale(1.05);
+}
+
+/* ===== FEED ===== */
+.feed {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-bottom: 30px;
+}
+
+.feed p {
+  color: #666;
+  font-style: italic;
+}
+
+.post {
+  background: var(--cor-posts);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-foto-user {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-destaque);
+}
+
+.post-header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.post-content h2 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-botao);
+  margin-bottom: 8px;
+}
+
+.post-content p {
+  color: #333;
+  line-height: 1.5;
+}
+
+.post-button {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.post-button a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--cor-destaque);
+  transition: color 0.3s ease;
+}
+
+.post-button a:hover {
+  color: #e85b51;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  height: 8vh;
+  background: linear-gradient(90deg, #ff9a8b, #ff6a88, #ff99ac);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);}
+
+#login, #cadastro{
+    background-color: #ede7d8;
+    width: 100%;
+    height: 83vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#login .form-login{
+    /* Ajustes de estilo do formulário para o design do site */
+    width: 100%;
+    max-width: 400px; /* Largura mais adequada */
+    
+    /* Cor de fundo: Usando a cor que você havia definido para a caixa do formulário */
+    background-color: #F4F3E8; 
+    
+    /* Borda: Usando a cor escura sugerida para dar contraste */
+    border: 1px solid #a69781; /* O tom mais escuro e terroso que combina com #ede7d8 */
+    
+    border-radius: 10px;
+    padding: 30px; /* Aumenta o espaçamento interno */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Adiciona uma sombra para profundidade */
+    
+    /* Organização do conteúdo interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os elementos */
+    
+    /* Removendo height: 90%; para o formulário se ajustar ao conteúdo */
+}
+
+/* Estilo para Títulos/Mensagens (Opcional, para consistência) */
+#login .form-login h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-texto); /* Usa a cor principal de texto */
+    margin-bottom: 10px;
+}
+
+/* Estilo para a tag <form> */
+#login .form-login form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Estilo dos Inputs (Consistente com form-post) */
+#login .form-login input[type="text"],
+#login .form-login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+#login .form-login input[type="text"]:focus,
+#login .form-login input[type="password"]:focus {
+    border-color: var(--cor-destaque);
+    outline: none;
+}
+
+/* Estilo do Botão (Usando a cor de destaque do site para consistência) */
+#login .form-login button[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-destaque); /* Usando a cor rosa/vermelha para destaque */
+    color: #fff;
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    margin-top: 5px;
+}
+
+#login .form-login button[type="submit"]:hover {
+    background-color: #e85b51; /* Tom um pouco mais escuro que a cor de destaque */
+    transform: scale(1.02);
+}
+
+#dashboard{
+    width: 100%;
+    height: 83vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#dashboard #dados{
+    width: 100%;
+    height: 15vh;
+    background-color: red;
+}
+
+#dashboard #info{
+    width: 100%;
+    height: 68vh;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+}
+
+#dashboard #info .col-info{
+    width: 50%;
+    height: 68vh;
+    background-color: green;
+}
+
+.form-cadastro {
+    width: 100%;
+    max-width: 400px;
+    
+    background-color: #ede7d8; /* Fundo levemente creme */
+    border: 1px solid #a69781; /* Borda sutil */
+    
+    border-radius: 10px;
+    padding: 30px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+}
+
+/* Estilo para Títulos/Mensagens */
+.form-cadastro h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-texto);
+    margin-bottom: 10px;
+}
+
+/* Estilo dos Inputs */
+.form-cadastro input[type="text"],
+.form-cadastro input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+/* Efeito de Foco (quando o usuário clica no campo) */
+.form-cadastro input[type="text"]:focus,
+.form-cadastro input[type="password"]:focus {
+    border-color: var(--cor-destaque);
+    outline: none;
+}
+
+/* Estilo do Botão */
+.form-cadastro button[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-destaque);
+    color: #fff;
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    margin-top: 5px;
+}
+
+/* Efeito Hover do Botão */
+.form-cadastro button[type="submit"]:hover {
+    background-color: #e85b51; /* Tom mais escuro */
+    transform: scale(1.02); /* Leve aumento para dar sensação de clique */
+}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="login">
+    <form class="form-login" action="/login" method="post">
+    <h2>Faça seu login no Blog</h2>
+    {% with msg = get_flashed_messages()|first %}
+        {% if msg %}
+        <p class="mensagem">{{ msg }}</p>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <input type="text" name="user" placeholder="Usuário" autocomplete="off" required>
+    <input type="password" name="senha" placeholder="Senha" autocomplete="off" required>
+    <p>Não tem cadastro? 
+        <a href="/cadastro">Faça aqui!</a> 
+    </p>
+    <button type="submit">Acessar</button>
+    </form>
+</div>
+
+{% endblock %}

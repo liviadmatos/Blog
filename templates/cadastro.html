@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="cadastro">
+    <form class="form-cadastro" action="/cadastro" method="post">
+    <h2>Faça seu cadastro no Blog</h2>
+    {% with msg = get_flashed_messages()|first %}
+        {% if msg %}
+        <p class="mensagem">{{ msg }}</p>
+        {% endif %}
+    {% endwith %}
+    <input type="text" name="nome" placeholder="Nome" autocomplete="off" required>
+    <input type="text" name="user" placeholder="Usuário" autocomplete="off" required>
+    <input type="password" name="senha" placeholder="Senha" autocomplete="off" required>
+    
+    <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+{% endblock %}

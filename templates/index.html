@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="inicio">
+        <div class="colunaesquerda">
+
+        </div>
+        <div class="center">
+            {% if 'user' in session%}
+            <div class="form-post">
+                {% with msg = get_flashed_messages()|first %}
+                {% if msg %}
+                <p class="mensagem">{{ msg }}</p>
+                {% endif %}
+                {% endwith %}
+                <form action="{{'/editarpost/' +post.idPost|string if post else '/novopost'}}" method="post">
+                    
+                    
+                <p>Olá, {{session['user']}}! O que gostaria de postar hoje?</p>
+                    
+                    <input type="text" name="titulo" placeholder="Título da postagem" value="{{post.titulo if post else ''}}" required>
+                    <textarea name="conteudo" placeholder="Escreva o conteúdo da postagem"required>{{post.conteudo if post else ''}}</textarea>
+                    <button type="submit">{{'Salvar alterações' if post else 'Postar'}}</button>
+                </form>
+
+            </div>
+            {% endif %}
+        <div class="feed">
+            {%if not postagens%}
+                <p>Ainda não temnos posts. Volte mais tarde!</p>
+            {%else%}
+            {% for post in postagens%}
+            <div class="post">
+                <div class="post-header">
+                    <img src="../static/uploads/{{ post.foto }}" class="post-foto-user">
+                    <p>{{post.user}} disse:</p>
+                    <p>{{ post.dataPost.strftime("%d/%m/%y") }}</p>
+
+                </div>
+                <div class="post-content">
+                    <h2>{{ post.titulo}}</h2>
+                    <p>{{ post.conteudo}}</p>
+                </div>
+                {% if post.idUsuario == session.get('idUsuario') or 'admin' in session  %}
+                <div class="post-button">
+                    {% if 'user' in session %}
+                    <a href="/editarpost/{{post.idPost}}">Editar</a>
+                    {% endif %}
+                    <a href="/excluirpost/{{post.idPost}}" onclick="return confirm('Confirma a exclusão?')">Excluir</a>
+                </div>
+                {% endif %}
+            </div>
+                {% endfor %}
+                {% endif %}
+        </div>
+        </div>
+        <div class="colunadireita">
+
+        </div>
+    </div>
+
+{% endblock %}

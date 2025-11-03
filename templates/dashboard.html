@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="dashboard">
+   <div id="dados">
+
+   </div> 
+
+   <div id="info">
+    <div class="col-info">
+        <h3>Usuários</h3>
+        {% for u in usuarios %}
+        <p>{{u.idUsuario}} - {{u.user}} - {{u.nome}}</p>
+        {% endfor %}
+ </div> 
+    <div class="col-info">
+        <h3>Posts</h3>
+        {% for p in posts %}
+        <p>{{p.idPost}} - {{p.titulo}} - {{ p.content | truncate(30)}}</p>
+        {% endfor %}
+    
+    
+  
+</div>
+
+{% endblock %}
