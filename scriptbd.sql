@@ -8,8 +8,9 @@ CREATE TABLE usuario(
     user VARCHAR(15) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL, 
     dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ativo BOOLEAN NOT NULL DEFAULT 1,
     foto VARCHAR(100)
-    )
+);
 
 CREATE TABLE post (
     idPost INT PRIMARY KEY AUTO_INCREMENT,
@@ -17,7 +18,19 @@ CREATE TABLE post (
     conteudo TEXT NOT NULL,
     idUsuario INT,
     dataPost TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
-
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
+
+CREATE VIEW vw_total_posts AS
+SELECT
+    COUNT(*) AS total_posts_ativos 
+    FROM post p
+    JOIN usuario u ON p.idUsuario = u.idUsuario
+    WHERE u.ativo = 1;
+
+CREATE VIEW vw_usuarios AS
+SELECT
+    COUNT(*) AS total_usuarios
+    FROM usuario
+    WHERE ativo = 1;
 

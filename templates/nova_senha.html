@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="novasenha">
+    <h2>Altere sua senha.</h2>
+    <form action="/usuario/novasenha" method="post">
+        <label>Senha:</label>
+        <input type="password" name="senha" required>
+        <label>Confirme a nova senha:</label>
+        <input type="password" name="confirmacao" required>
+        <button type="submit">Cadastrar nova senha</button>
+        <a href="/">
+            <button type="button">Cancelar</button>
+        </a>
+    </form>
+</div>
+
+{% endblock %}

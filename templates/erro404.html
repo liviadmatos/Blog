@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="erro404">
+    <img src="{{ url_for('static', filename='img/erro404.png') }}" alt="Erro 404 - Página não encontrada">
+    <a href="/"><button>Voltar para a página inicial</button></a>
+</div>
+
+{% endblock %}

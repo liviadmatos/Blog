@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="perfil">
+    {% if foto %}
+<img src="../static/uploads/{{foto}}" class="foto-perfil">
+{% else %}
+<img src="../static/uploads/placeholder.png" class="foto-perfil">
+{% endif %}
+<h2>Olá, {{ nome }}!</h2>
+<h3>Alterar dados:</h3>
+
+    <form action="/perfil" method="POST" enctype="multipart/form-data">
+<label>Nome do Usuário:</label>
+<input type="text" name="nome" value="{{ nome }}" required>
+<label>User:</label>
+<input type="text" name="user" value="{{ user }}" required>
+<label></label>
+<input type="file" name="foto" accept=".jpg, .png, .webp">
+<div class="botoes">
+    <button type="submit">Salvar alterações</button>
+    <a href="/usuario/novasenha"><button type="button">Alterar senha</button></a>
+</div>
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

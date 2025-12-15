@@ -17,7 +17,6 @@
                     
                     
                 <p>Olá, {{session['user']}}! O que gostaria de postar hoje?</p>
-                    
                     <input type="text" name="titulo" placeholder="Título da postagem" value="{{post.titulo if post else ''}}" required>
                     <textarea name="conteudo" placeholder="Escreva o conteúdo da postagem"required>{{post.conteudo if post else ''}}</textarea>
                     <button type="submit">{{'Salvar alterações' if post else 'Postar'}}</button>
@@ -32,7 +31,11 @@
             {% for post in postagens%}
             <div class="post">
                 <div class="post-header">
+                    {% if post.foto %}
                     <img src="../static/uploads/{{ post.foto }}" class="post-foto-user">
+                    {% else %}
+                    <img src="../static/uploads/placeholder.png" class="post-foto-user">
+                    {% endif %}
                     <p>{{post.user}} disse:</p>
                     <p>{{ post.dataPost.strftime("%d/%m/%y") }}</p>
 

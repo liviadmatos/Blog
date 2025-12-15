@@ -3,24 +3,80 @@
 
 <div id="dashboard">
    <div id="dados">
-
-   </div> 
+    <div class="info-card">
+        <h3>Total de Usuários</h3>
+        <p>{{ total_usuarios[0] if total_usuarios else 0 }}</p>
+    </div>
+    <div class="info-card">
+        <h3>Total de Posts</h3>
+        <p>{{ total_posts_ativos[0] }}</p>
+    </div>
+</div>
 
    <div id="info">
     <div class="col-info">
-        <h3>Usuários</h3>
-        {% for u in usuarios %}
-        <p>{{u.idUsuario}} - {{u.user}} - {{u.nome}}</p>
-        {% endfor %}
+        <h3><i class="fas fa-users"></i> Usuários</h3>
+        <table>
+            <tr>
+                <th>Ações</th>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>User</th>
+                <th>Senha</th>
+                <th>Data de cadastro</th>
+                <th>Status</th>
+            </tr>
+            {% for u in usuarios %}
+            <tr>
+                <td>
+                    <a href="/usuario/excluir/{{u.idUsuario}}" onclick="return confirm('Tem certeza?')">
+                        <button><i class="fas fa-trash"></i> Excluir</button>
+                    </a>
+                </td>
+                <td>{{u.idUsuario}}</td>
+                <td>{{u.nome}}</td>
+                <td>{{u.user}}</td>
+                
+                <td>
+                    <a href="/usuario/reset/{{ u.idUsuario }}">
+                        <button><i class="fas fa-key"></i> Resetar</button>
+                    </a>
+                </td>
+                
+                <td>{{u.dataCadastro.strftime("%d/%m/%y")}}</td>
+                <td>
+                    <a href="/usuario/status/{{u.idUsuario}}">
+                        <button>
+                            {% if u.ativo %}
+                                <i class="fas fa-ban"></i> Banir
+                            {% else %}
+                                <i class="fas fa-check-circle"></i> Reativar
+                            {% endif %}
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">Nenhum usuário cadastrado!</td>
+            </tr>
+            {% endfor %}
+        </table>
  </div> 
     <div class="col-info">
-        <h3>Posts</h3>
+        <h3><i class="fas fa-newspaper"></i> Posts</h3>
         {% for p in posts %}
-        <p>{{p.idPost}} - {{p.titulo}} - {{ p.content | truncate(30)}}</p>
+        <p>
+            <a href="/excluirpost/{{p.idPost}}" onclick="return confirm('Confirma a exclusão?')">
+                <button><i class="fas fa-trash"></i></button>
+            </a>
+            {{p.idPost}} - <strong>{{p.titulo}}</strong> - {{ p.content | truncate(30)}}
+        </p>
+        {% else %}
+        <p>Nenhum post encontrado.</p>
         {% endfor %}
-    
-    
-  
+    </div>
+</div>
 </div>
 
 {% endblock %}
